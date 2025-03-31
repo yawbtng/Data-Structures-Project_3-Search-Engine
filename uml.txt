@@ -1,21 +1,70 @@
-+---------------------+          +---------------------+
-|     IndexHandler    |<>------->|      AVLTree        |
-+---------------------+          +---------------------+
-| - wordIndex         |          | - root: Node*       |
-| - orgIndex          |          +---------------------+
-| - personIndex       |          | + insert()          |
-| + addDocument()     |          | + search()          |
-| + saveIndices()     |          | + serialize()       |
-| + loadIndices()     |          | + deserialize()     |
-+---------------------+          +---------------------+
-            ^
++--------------------------------+          +--------------------------------------+
+|         IndexHandler           |<>------->|                AVLTree<K,V>             |
++--------------------------------+          +--------------------------------------+
+| - wordIndex: AVLTree<string,V> |          | - root: Node*                         |
+| - orgIndex: AVLTree<string,V>  |          | - size: int                           |
+| - personIndex: AVLTree<string,V>|         +--------------------------------------+
+| - totalDocuments: int          |          | + insert(key, value): void            |
+| + addDocument(doc): void       |          | + search(key): V*                     |
+| + saveIndices(path): void      |          | + remove(key): bool                   |
+| + loadIndices(path): void      |          | + balance(): void                     |
+| + getTotalDocuments(): int     |          | + rotateLeft(node): Node*             |
+| + getDocumentInfo(docID): Info |          | + rotateRight(node): Node*            |
+| + getDocumentFreq(term): int   |          | + getHeight(node): int                |
+| + listDocuments(): vector<string>|         | + serialize(ostream&): void           |
++--------------------------------+          | + deserialize(istream&): void         |
+            ^                               | + traverseInOrder(): vector<pair<K,V>>|
+            |                               +--------------------------------------+
+            |                                         ^
+            |                                         |
+            |                                +-------------------+
+            |                                |     AVLNode<K,V>  |
+            |                                +-------------------+
+            |                                | - key: K          |
+            |                                | - value: V        |
+            |                                | - height: int     |
+            |                                | - left: Node*     |
+            |                                | - right: Node*    |
+            |                                +-------------------+
             |
-+---------------------+          +---------------------+
-|   DocumentParser    |<>------->|  QueryProcessor    |
-+---------------------+          +---------------------+
-| - stopwords: set    |          | - indexHandler     |
-| - stemmer           |          +---------------------+
-| + parseJSON()       |          | + processQuery()   |
-| + processEntities() |          | + rankResults()    |
-| + calculateTFIDF()  |          +---------------------+
-+---------------------+
++--------------------------------+          +-------------------------------------+
+|        DocumentParser          |<>------->|          QueryProcessor             |
++--------------------------------+          +-------------------------------------+
+| - indexHandler: IndexHandler&  |          | - indexHandler: IndexHandler&       |
+| - stopwords: unordered_set<string>|       +-------------------------------------+
+| - stemmer: Porter2Stemmer      |          | + processQuery(query): vector<QueryResult>|
+| + parseJSON(filename): bool    |          | + parseQuery(query): tuple<...>     |
+| + parseDirectory(path): void   |          | + rankResults(scores): vector<QueryResult>|
+| + processText(text): vector<string>|      | + applyExclusions(results, terms)   |
+| + processEntities(meta): void  |          | + getFullArticle(docID): string     |
+| + calculateTFIDF(doc): void    |          +-------------------------------------+
+| + removeStopwords(words): void |                       ^
++--------------------------------+                       |
+            ^                                            |
+            |                                            |
+            |                                            |
++--------------------------------+                       |
+|        UserInterface          |----------------------->+
++--------------------------------+
+| - indexHandler: IndexHandler   |
+| - documentParser: DocumentParser|
+| - queryProcessor: QueryProcessor|
++--------------------------------+
+| + run(argc, argv): int         |
+| + displayHelp(): void          |
+| + handleIndexCommand(args): void|
+| + handleQueryCommand(args): void|
+| + handleUICommand(): void      |
+| + displayResults(results): void |
+| + displayArticle(docID): void  |
++--------------------------------+
+
++----------------------------+
+|        QueryResult         |
++----------------------------+
+| + docID: string            |
+| + score: double            |
+| + title: string            |
+| + date: string             |
+| + source: string           |
++----------------------------+
