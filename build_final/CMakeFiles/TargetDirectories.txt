@@ -1,0 +1,5 @@
+C:/Users/yawbt/Documents/CS 5393- Data Structures in C++/Project_3/build_final/CMakeFiles/porter_stemmer.dir
+C:/Users/yawbt/Documents/CS 5393- Data Structures in C++/Project_3/build_final/CMakeFiles/supersearch.dir
+C:/Users/yawbt/Documents/CS 5393- Data Structures in C++/Project_3/build_final/CMakeFiles/test_search.dir
+C:/Users/yawbt/Documents/CS 5393- Data Structures in C++/Project_3/build_final/CMakeFiles/edit_cache.dir
+C:/Users/yawbt/Documents/CS 5393- Data Structures in C++/Project_3/build_final/CMakeFiles/rebuild_cache.dir

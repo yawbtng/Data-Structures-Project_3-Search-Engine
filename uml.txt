@@ -1,0 +1,21 @@
++---------------------+          +---------------------+
+|     IndexHandler    |<>------->|      AVLTree        |
++---------------------+          +---------------------+
+| - wordIndex         |          | - root: Node*       |
+| - orgIndex          |          +---------------------+
+| - personIndex       |          | + insert()          |
+| + addDocument()     |          | + search()          |
+| + saveIndices()     |          | + serialize()       |
+| + loadIndices()     |          | + deserialize()     |
++---------------------+          +---------------------+
+            ^
+            |
++---------------------+          +---------------------+
+|   DocumentParser    |<>------->|  QueryProcessor    |
++---------------------+          +---------------------+
+| - stopwords: set    |          | - indexHandler     |
+| - stemmer           |          +---------------------+
+| + parseJSON()       |          | + processQuery()   |
+| + processEntities() |          | + rankResults()    |
+| + calculateTFIDF()  |          +---------------------+
++---------------------+

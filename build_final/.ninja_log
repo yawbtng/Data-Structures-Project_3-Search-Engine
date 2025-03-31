@@ -1,0 +1,13 @@
+# ninja log v6
+5	3276	7651640008792654	CMakeFiles/porter_stemmer.dir/thirdparty/porter2_stemmer/thirdparty/porter2_stemmer/porter2_stemmer.cpp.obj	ec5005296d434678
+53	514	7651641228447946	test_search.exe	af8e3cb8d275e668
+59	3682	7651640009323340	CMakeFiles/test_search.dir/test/test_avltree.cpp.obj	5b1de92fac63c320
+29	1933	7651641541386218	CMakeFiles/supersearch.dir/src/main.cpp.obj	1e26fd9e13efdab3
+62	3536	7651641541705048	CMakeFiles/supersearch.dir/src/IndexHandler.cpp.obj	adbf3540746c28ed
+17	9250	7651640724993819	libporter_stemmer.a	1d3b4688f94ef072
+120	3002	7651641542288538	CMakeFiles/supersearch.dir/src/UserInterface.cpp.obj	80d26e327165ab31
+56	4059	7651641541648134	CMakeFiles/supersearch.dir/src/DocumentParser.cpp.obj	5e6d706b90916836
+29	1613	7651641834978423	CMakeFiles/supersearch.dir/src/main.cpp.obj	1e26fd9e13efdab3
+44	2477	7651641835142066	CMakeFiles/supersearch.dir/src/UserInterface.cpp.obj	80d26e327165ab31
+37	3031	7651641835096390	CMakeFiles/supersearch.dir/src/QueryProcessor.cpp.obj	428f2b690a5f9ddf
+3032	3382	7651641865048755	supersearch.exe	d072ee12e6d7fff5
